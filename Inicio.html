@@ -7,23 +7,25 @@
     <title>Document</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=light_mode");
+        @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
+
+        body {
+            font-family: 'Comic Neue', 'sans-serif';
+            font-size: 20px;
+            font-weight: bold;
+        }
 
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
 
         }
 
-        .material-symbols-outlined {
-            font-variation-settings:
-                'FILL' 0,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 24
+        li{
+            list-style: none;
+            
         }
-
         h2 {
             display: flex;
             justify-content: center;
@@ -42,36 +44,148 @@
             border: 2px solid black;
         }
 
-        .listaTarefas{
+        .listaTarefas {
             display: flex;
             justify-content: center;
-            padding-top: 100px;
+            padding-top: 150px;
+        }
+
+        #inputTarefa {
+            width: 400px;
+            height: 35px;
+            border-radius: 5px;
+            border: 2px solid black;
+            font-family: 'Comic Neue', 'sans-serif';
+        }
+
+        #botaoMais {
+            width: 45px;
+            height: 35px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-family: 'Comic Neue', 'sans-serif';
+
+        }
+
+        .progress {
+            display: flex;
+            justify-content: center;
+            padding-top: 400px;
+        }
+
+
+        progress {
+            width: 445px;
+            height: 30px;
+            appearance: none;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        #progress-text {
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        
-            <a><i><span class="material-symbols-outlined">
-                        light_mode
-                    </span></i></a>
-            <h2>Lista de Tarefas</h2>
-            <main class="listaTarefas">
-                <div class="input-container">
-                  <input type="text" id="inputTask" placeholder="Adicione uma nova tarefa...">
-                  <button id="addTaskBtn">+</button>
-                </div>
-          
-                <ul id="listaTarefas"></ul>
-          
-                <!-- <footer>
-                  <p id="tarefasConcluidas">0 tarefas concluídas</p>
-                </footer> -->
-              </main>
-          
-        
+
+        <a><i><span class="material-symbols-outlined">
+                    light_mode
+                </span></i></a>
+        <h2>Lista de Tarefas</h2>
+        <main class="listaTarefas">
+            <div class="inputContainer">
+                <input type="text" id="inputTarefa">
+                <button id="botaoMais">+</button>
+            </div>
+
+            <ul id="listaTarefas" class="listaTarefas">
+
+            </ul>
+
+
+
+        </main>
+        <div class="progress">
+            <progress id="tarefaProgress" value="1" max="3"></progress>
+            <span id="progressText"></span>
+        </div>
+
+
     </div>
+
+    <script>// Selecionar os elementos do DOM
+        // Selecionar os elementos do DOM
+const inputTarefa = document.getElementById("inputTarefa");
+const botaoMais = document.getElementById("botaoMais");
+const listaTarefa = document.getElementById("listaTarefas");
+
+// Função para adicionar uma nova tarefa
+function adicionarTarefa() {
+  const textoTarefa = inputTarefa.value.trim();
+
+  // Verificar se o input está vazio
+  if (textoTarefa === "") {
+    alert("Por favor, insira uma tarefa!");
+    return;
+  }
+
+  // Criar um novo elemento <li>
+  const novaTarefa = document.createElement("li");
+  novaTarefa.className = "task-item";
+
+  // Adicionar conteúdo ao <li>
+  novaTarefa.innerHTML = `
+    <input type="checkbox">
+    <span class="task-text">${textoTarefa}</span>
+    <button class="edit-btn">✏️</button>
+    <button class="delete-btn">🗑️</button>
+  `;
+
+  // Adicionar o novo <li> à lista
+  listaTarefa.appendChild(novaTarefa);
+
+  // Limpar o campo de entrada
+  inputTarefa.value = "";
+
+  // Adicionar eventos aos novos botões
+  adicionarEventos(novaTarefa);
+}
+
+// Função para adicionar eventos aos botões de editar e excluir
+function adicionarEventos(tarefa) {
+  const botaoExcluir = tarefa.querySelector(".delete-btn");
+  const checkbox = tarefa.querySelector("input[type='checkbox']");
+
+  // Evento de remover tarefa
+  botaoExcluir.addEventListener("click", () => tarefa.remove());
+
+  // Evento de marcar como concluída
+  checkbox.addEventListener("change", (event) => {
+    tarefa.classList.toggle("completed", event.target.checked);
+  });
+}
+
+// Evento ao clicar no botão de adicionar
+botaoMais.addEventListener("click", adicionarTarefa);
+
+// Permitir adicionar ao pressionar "Enter"
+inputTarefa.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    adicionarTarefa();
+  }
+});
+
+        </script>
 </body>
 
 </html>
