@@ -4,77 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style> 
-     @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete");
-        @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=light_mode");
+    <title>Lista de Tarefas</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
         @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
-
+    
         body {
-            font-family: 'Comic Neue', 'sans-serif';
+            font-family: 'Comic Neue', sans-serif;
             font-size: 20px;
             font-weight: bold;
         }
-
+    
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
-
         }
-
-        li{
+    
+        li {
             list-style: none;
-            
         }
+    
         h2 {
             display: flex;
             justify-content: center;
             padding-top: 30px;
         }
-
-        .material-symbols-outlined {
+    
+        #dark {
             position: fixed;
             right: 10px;
-            display: flex;
-            justify-content: center;
             top: 10px;
             padding: 10px;
             border-radius: 10px;
             opacity: 1;
             border: 2px solid black;
+            cursor: pointer;
         }
-
+    
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    
+        /* Ícones específicos */
+        .icon-edit::before {
+            content: "edit";
+        }
+    
+        .icon-delete::before {
+            content: "delete";
+        }
+    
+        .icon-light_mode::before {
+            content: "light_mode";
+        }
+    
         .listaTarefas {
             display: flex;
-            justify-content: center;
-            padding-top: 150px;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
         }
-
+    
+        .inputContainer {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+    
         #inputTarefa {
             width: 400px;
             height: 35px;
             border-radius: 5px;
             border: 2px solid black;
-            font-family: 'Comic Neue', 'sans-serif';
+            font-family: 'Comic Neue', sans-serif;
         }
-
+    
         #botaoMais {
             width: 45px;
             height: 35px;
             border: 2px solid black;
             border-radius: 5px;
-            font-family: 'Comic Neue', 'sans-serif';
-
+            font-family: 'Comic Neue', sans-serif;
+            cursor: pointer;
         }
-
+    
+        ul {
+            padding: 0;
+            width: 450px;
+        }
+    
+        ul li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        .task-text {
+            flex: 1;
+            margin: 0 10px;
+        }
+    
+        .task-text.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    
         .progress {
             display: flex;
             justify-content: center;
-            padding-top: 400px;
+            align-items: center;
+            margin-top: 30px;
+            flex-direction: column;
         }
-
-
+    
         progress {
             width: 445px;
             height: 30px;
@@ -83,121 +133,105 @@
             border-radius: 5px;
             overflow: hidden;
         }
-
+    
         progress::-webkit-progress-bar {
             background-color: #f0f0f0;
-            border-radius: 5px;
         }
-
-        #progress-text {
+    
+        #progressText {
             font-size: 14px;
             color: #555;
+            margin-top: 5px;
         }
-        
-.material-symbol-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
-</style>
+    
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
     </style>
+    
 </head>
 
 <body>
     <div class="container">
-
-        <a><i><span class="material-symbols-outlined">
-                    light_mode
-                </span></i></a>
+        <span id="dark" class="material-symbols-outlined icon-light_mode"></span>
         <h2>Lista de Tarefas</h2>
         <main class="listaTarefas">
             <div class="inputContainer">
-                <input type="text" id="inputTarefa">
+                <input type="text" id="inputTarefa" placeholder="Digite sua tarefa">
                 <button id="botaoMais">+</button>
             </div>
-
-            <ul id="listaTarefas" class="listaTarefas">
-
-            </ul>
-
-
-
+            <ul id="listaTarefas" class="listaTarefas"></ul>
         </main>
         <div class="progress">
-            <progress id="tarefaProgress" value="1" max="3"></progress>
-            <span id="progressText"></span>
+            <progress id="tarefaProgress" value="0" max="3"></progress>
+            <span id="progressText">0/0 tarefas concluídas</span>
         </div>
-
-
     </div>
 
-    <script>// Selecionar os elementos do DOM
-        // Selecionar os elementos do DOM
-const inputTarefa = document.getElementById("inputTarefa");
-const botaoMais = document.getElementById("botaoMais");
-const listaTarefa = document.getElementById("listaTarefas");
+    <script>
+        const inputTarefa = document.getElementById("inputTarefa");
+        const botaoMais = document.getElementById("botaoMais");
+        const listaTarefas = document.getElementById("listaTarefas");
+        const tarefaProgress = document.getElementById("tarefaProgress");
+        const progressText = document.getElementById("progressText");
 
-// Função para adicionar uma nova tarefa
-function adicionarTarefa() {
-  const textoTarefa = inputTarefa.value.trim();
+        function atualizarProgresso() {
+            const totalTarefas = listaTarefas.children.length;
+            const tarefasConcluidas = listaTarefas.querySelectorAll(".task-text.completed").length;
+            tarefaProgress.max = totalTarefas;
+            tarefaProgress.value = tarefasConcluidas;
+            progressText.textContent = `${tarefasConcluidas}/${totalTarefas} tarefas concluídas`;
+        }
 
-  // Verificar se o input está vazio
-  if (textoTarefa === "") {
-    alert("Por favor, insira uma tarefa!");
-    return;
-  }
+        function adicionarTarefa() {
+            const textoTarefa = inputTarefa.value.trim();
 
-  // Criar um novo elemento <li>
-  const novaTarefa = document.createElement("li");
-  novaTarefa.className = "task-item";
+            if (textoTarefa === "") {
+                alert("Por favor, insira uma tarefa!");
+                return;
+            }
 
-  // Adicionar conteúdo ao <li>
-  novaTarefa.innerHTML = `
-    <input type="checkbox">
-    <span class="task-text">${textoTarefa}</span>
-    <button class="edit-btn">✏️</button>
-     <button class="delete-btn">
-      <span class="material-symbol-outlined">delete</span>
-    </button>
-  `;
+            const novaTarefa = document.createElement("li");
+            novaTarefa.innerHTML = `
+                <input type="checkbox" class="task-checkbox">
+                <span class="task-text">${textoTarefa}</span>
+                <button class="edit-btn"><span class="material-symbols-outlined icon-edit"></span></button>
+                <button class="delete-btn"><span class="material-symbols-outlined icon-delete"></span></button>
+            `;
 
-  // Adicionar o novo <li> à lista
-  listaTarefa.appendChild(novaTarefa);
+            listaTarefas.appendChild(novaTarefa);
+            inputTarefa.value = "";
+            adicionarEventos(novaTarefa);
+            atualizarProgresso();
+        }
 
-  // Limpar o campo de entrada
-  inputTarefa.value = "";
+        function adicionarEventos(tarefa) {
+            const botaoExcluir = tarefa.querySelector(".delete-btn");
+            const checkbox = tarefa.querySelector(".task-checkbox");
 
-  // Adicionar eventos aos novos botões
-  adicionarEventos(novaTarefa);
-}
+            botaoExcluir.addEventListener("click", () => {
+                tarefa.remove();
+                atualizarProgresso();
+            });
 
-// Função para adicionar eventos aos botões de editar e excluir
-function adicionarEventos(tarefa) {
-  const botaoExcluir = tarefa.querySelector(".delete-btn");
-  const checkbox = tarefa.querySelector("input[type='checkbox']");
+            checkbox.addEventListener("change", (event) => {
+                tarefa.querySelector(".task-text").classList.toggle("completed", event.target.checked);
+                atualizarProgresso();
+            });
+        }
 
-  // Evento de remover tarefa
-  botaoExcluir.addEventListener("click", () => tarefa.remove());
+        botaoMais.addEventListener("click", adicionarTarefa);
 
-  // Evento de marcar como concluída
-  checkbox.addEventListener("change", (event) => {
-    tarefa.classList.toggle("completed", event.target.checked);
-  });
-}
-
-// Evento ao clicar no botão de adicionar
-botaoMais.addEventListener("click", adicionarTarefa);
-
-// Permitir adicionar ao pressionar "Enter"
-inputTarefa.addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    adicionarTarefa();
-  }
-});
-
-        </script>
+        inputTarefa.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                adicionarTarefa();
+            }
+        });
+    </script>
 </body>
+
 
 </html>
