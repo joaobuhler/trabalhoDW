@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<<<<<<< HEAD
-    <style>
+    <style> 
+     @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete");
         @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=light_mode");
         @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
 
@@ -93,11 +93,18 @@
             font-size: 14px;
             color: #555;
         }
+        
+.material-symbol-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
     </style>
-=======
-    <link rel="stylesheet" href="inicio.css">
->>>>>>> 566e59b3e32f7536c8a92cb33388ba88ed070163
 </head>
+
 <body>
     <div class="container">
 
@@ -151,7 +158,9 @@ function adicionarTarefa() {
     <input type="checkbox">
     <span class="task-text">${textoTarefa}</span>
     <button class="edit-btn">✏️</button>
-    <button class="delete-btn">🗑️</button>
+     <button class="delete-btn">
+      <span class="material-symbol-outlined">delete</span>
+    </button>
   `;
 
   // Adicionar o novo <li> à lista
