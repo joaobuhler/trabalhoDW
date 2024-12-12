@@ -10,7 +10,7 @@ function atualizarProgresso() {
     const tarefasConcluidas = listaTarefas.querySelectorAll(".task-text.completed").length;
     tarefaProgress.max = totalTarefas;
     tarefaProgress.value = tarefasConcluidas;
-    progressText.textContent = `${tarefasConcluidas}/${totalTarefas} tarefas concluídas`;
+    progressText.textContent = `${tarefasConcluidas} ${totalTarefas} tarefas concluídas`;
 }
 
 function adicionarTarefa() {
@@ -68,4 +68,26 @@ darkModeButton.addEventListener("click", () => {
     } else {
         darkModeButton.classList.replace("icon-dark_mode", "icon-light_mode");
     }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".container");
+    const tela2 = document.querySelector(".tela2");
+
+    // Esconde a div "tela2" inicialmente
+    tela2.style.display = "none";
+
+    // Adiciona o listener para a combinação de teclas
+    document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey && event.key === "h") {
+            event.preventDefault(); // Evita o comportamento padrão do navegador
+            if (tela2.style.display === "none") {
+                tela2.style.display = "block";
+                container.style.display = "block";
+            } else {
+                tela2.style.display = "none";
+                container.style.display = "block";
+            }
+        }
+    });
 });

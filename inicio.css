@@ -1,234 +1,293 @@
-  /* Importa fontes personalizadas do Google Fonts */
-  @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
-  @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
+/* Importa fontes personalizadas do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
 
-  /* Estilo do corpo da página */
-  body {
-      margin-top: 10vw;
-      justify-content: center;
-      display: flex;
-      font-family: 'Comic Neue', sans-serif;
-      font-size: 20px;
-      font-weight: bold;
-      background-color: white;
-      color: black;
-      transition: background-color 0.3s, color 0.3s;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
 
-  /* redefine margens e espaçamentos */
-  * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-  }
+/* Estilo do corpo da página */
+body {
+    margin-top: 5vw;
+    justify-content: center;
+    display: flex;
+    font-family: 'Comic Neue', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-  /* Remove o estilo padrão de itens de lista */
-  li {
-      list-style: none;
-  }
-  
-  /* Centraliza o título */
-  h2 {
-      display: flex;
-      justify-content: center;
-      padding-top: 30px;
-  }
-  
-  /* muda o fundo e a cor no modo escuro */
-  body.dark-mode {
-      background-color: #242323;
-      color: #eaeaea;
-  }
+/* redefine margens e espaçamentos */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-  /* Botão que muda para o modo escuro */
-  #dark {
-      position: fixed;
-      right: 10px;
-      top: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      border: 2px solid rgb(0, 0, 0);
-      cursor: pointer;
-  }
+/* Remove o estilo padrão de itens de lista */
+li {
+    list-style: none;
+}
 
-  /* Muda a borda do botão no modo escuro */
-  body.dark-mode #dark {
-      border: 2px solid white;
-  }
-  
-  /* muda o input no modo escuro */
-  body.dark-mode #inputTarefa {
-      border: 2px solid white;
-      background-color: #272727;
-      color: white;
-  }
+/* Centraliza o título */
+h2 {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
 
-  /* cor do placeholder */
-  ::placeholder{
-      color: rgb(46, 46, 46);
-  }
-  
-  /* icones */
-  .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      vertical-align: middle;
-      cursor: pointer;
-  }
+/* muda o fundo e a cor no modo escuro */
+body.dark-mode {
+    background-color: #242323;
+    color: #eaeaea;
+}
 
-  /* muda e define o conteúdo de ícones de modo claro*/
-  .icon-light_mode::before {
-      content: "light_mode";
-  }
+/* Botão que muda para o modo escuro */
+#dark {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    cursor: pointer;
+}
 
-  /* no modo escuro */
-  .icon-dark_mode::before {
-      content: "dark_mode";
-  }
+/* Muda a borda do botão no modo escuro */
+body.dark-mode #dark {
+    border: 2px solid white;
+}
 
-  /*organização da lista de tarefas */
-  .listaTarefas {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-  }
+body.dark-mode .tela2 {
+  background-color: rgb(49, 49, 49);
+  color: rgb(201, 200, 200);
+}
 
-  /* container do input*/
-  .inputContainer {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-  }
+/* muda o input no modo escuro */
+body.dark-mode #inputTarefa {
+    border: 2px solid white;
+    background-color: #272727;
+    color: white;
+}
 
-  /* campo do input */
-  #inputTarefa {
-      text-indent: 10px;
-      width: 400px;
-      height: 35px;
-      border-radius: 5px;
-      border: 2px solid black;
-      font-family: 'Comic Neue', sans-serif;
-  }
-  body.dark-mode #botaoMais {
-      border: 2px solid white;
-      background-color: #424242;
-      color: white;
-  }
-  
-     /* Botão para adicionar tarefas */
-     #botaoMais {
-      width: 45px;
-      height: 35px;
-      border: 2px solid black;
-      border-radius: 5px;
-      font-family: 'Comic Neue', sans-serif;
-      cursor: pointer;
-      font-size: 22px;
-      font-weight: bold;
-  }
+/* cor do placeholder */
+::placeholder{
+    color: rgb(46, 46, 46);
+}
 
-  /* Estilos para os ícones de edição e exclusão */
-  .icon-edit::before {
-      content: "edit";
-  }
+/* icones */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+    cursor: pointer;
+}
 
-  .icon-delete::before {
-      content: "delete";
-  }
+/* muda e define o conteúdo de ícones de modo claro*/
+.icon-light_mode::before {
+    content: "light_mode";
+}
 
-  /* Modo escuro - estilo para os itens da lista */
-  body.dark-mode ul li {
-      background-color: #333232;
-      border: 2px solid rgb(255, 255, 255);
-  }
+/* no modo escuro */
+.icon-dark_mode::before {
+    content: "dark_mode";
+}
 
-  /* Modo escuro - cor dos ícones */
-  body.dark-mode .material-symbols-outlined {
-      color: white;
-  }
+/*organização da lista de tarefas */
+.listaTarefas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
 
-  /* Modo escuro - cor do texto placeholder */
-  body.dark-mode ::placeholder {
-      color: rgb(187, 187, 187);
-  }
-  
-  /* Modo escuro - estilo para o elemento progress */
-  body.dark-mode progress {
-      border: 2px solid white;
-  }
+/* container do input*/
+.inputContainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-  /* Estilo geral para a lista */
-  ul {
-      padding: 0;
-      width: 450px;
-  }
+/* campo do input */
+#inputTarefa {
+    text-indent: 10px;
+    width: 400px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-family: 'Comic Neue', sans-serif;
+}
+body.dark-mode #botaoMais {
+    border: 2px solid white;
+    background-color: #424242;
+    color: white;
+}
 
-  /* Estilo para os itens da lista */
-  ul li {
-      display: flex; /* Alinha os elementos filhos em linha */
-      align-items: center; /* Centraliza os elementos verticalmente */
-      justify-content: space-between; /* Espaçamento igual entre os elementos */
-      background-color: #f0f0f0; /* Fundo claro */
-      padding: 10px; /* Espaçamento interno */
-      width: 450px; /* Largura dos itens */
-      border: 2px solid black; /* Borda preta */
-      border-radius: 5px; /* Bordas arredondadas */
-      margin-bottom: 10px; /* Espaço entre os itens */
-      word-break: break-all; /* Quebra palavras longas */
-  }
+   /* Botão para adicionar tarefas */
+   #botaoMais {
+    width: 45px;
+    height: 35px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: 'Comic Neue', sans-serif;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-  /* Estilo para o texto das tarefas */
-  .task-text {
-      flex: 1; /* Ocupa o espaço disponível */
-      margin: 0 10px; /* Margem lateral */
-  }
+/* Estilos para os ícones de edição e exclusão */
+.icon-edit::before {
+    content: "edit";
+}
 
-  /* Estilo para tarefas concluídas */
-  .task-text.completed {
-      text-decoration: line-through; /* Texto riscado */
-      color: gray; /* Cor cinza */
-  }
+.icon-delete::before {
+    content: "delete";
+}
 
-  /* Estilo para a seção de progresso */
-  .progress {
-      display: flex; /* Alinha os elementos filhos em linha */
-      justify-content: center; /* Centraliza horizontalmente */
-      align-items: center; /* Centraliza verticalmente */
-      margin-top: 30px; /* Margem superior */
-      flex-direction: column; /* Alinha os elementos em coluna */
-  }
+/* Modo escuro - estilo para os itens da lista */
+body.dark-mode ul li {
+    background-color: #333232;
+    border: 2px solid rgb(255, 255, 255);
+}
 
-  /* Estilo para o elemento progress */
-  progress {
-      width: 445px; /* Largura do progresso */
-      height: 30px; /* Altura do progresso */
-      appearance: none; /* Remove o estilo padrão */
-      border: 2px solid #000000; /* Borda preta */
-      border-radius: 5px; /* Bordas arredondadas */
-      overflow: hidden; /* Esconde o excesso */
-  }
+/* Modo escuro - cor dos ícones */
+body.dark-mode .material-symbols-outlined {
+    color: white;
+}
 
-  /* Estilo para a barra de progresso no Webkit */
-  progress::-webkit-progress-bar {
-      background-color: #f0f0f0; /* Fundo claro */
-  }
+/* Modo escuro - cor do texto placeholder */
+body.dark-mode ::placeholder {
+    color: rgb(187, 187, 187);
+}
 
-  /* Estilo para o texto de progresso */
-  #progressText {
-      font-size: 14px; /* Tamanho da fonte */
-      color: #555; /* Cor do texto */
-      margin-top: 5px; /* Margem superior */
-  }
+/* Modo escuro - estilo para o elemento progress */
+body.dark-mode progress {
+    border: 2px solid white;
+}
 
-  /* Modo escuro - cor do texto de progresso */
-  body.dark-mode #progressText {
-      color: #bbbbbb; /* Cor acinzentada */
-  }
+/* Estilo geral para a lista */
+ul {
+    padding: 0;
+    width: 450px;
+}
 
-  /* Estilo geral para botões */
-  button {
-      background: none; /* Sem fundo */
-      border: none; /* Sem borda */
-      cursor: pointer; /* Cursor "pointer" ao passar sobre o botão */
-      font-size: 18px; /* Tamanho da fonte */
-  }
+/* Estilo para os itens da lista */
+ul li {
+    display: flex; /* Alinha os elementos filhos em linha */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    justify-content: space-between; /* Espaçamento igual entre os elementos */
+    background-color: #f0f0f0; /* Fundo claro */
+    padding: 10px; /* Espaçamento interno */
+    width: 450px; /* Largura dos itens */
+    border: 2px solid black; /* Borda preta */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 10px; /* Espaço entre os itens */
+    word-break: break-all; /* Quebra palavras longas */
+}
+
+/* Estilo para o texto das tarefas */
+.task-text {
+    flex: 1; /* Ocupa o espaço disponível */
+    margin: 0 10px; /* Margem lateral */
+}
+
+/* Estilo para tarefas concluídas */
+.task-text.completed {
+    text-decoration: line-through; /* Texto riscado */
+    color: gray; /* Cor cinza */
+}
+
+/* Estilo para a seção de progresso */
+.progress {
+    display: flex; /* Alinha os elementos filhos em linha */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 30px; /* Margem superior */
+    flex-direction: column; /* Alinha os elementos em coluna */
+}
+
+/* Estilo para o elemento progress */
+progress {
+    width: 445px; /* Largura do progresso */
+    height: 30px; /* Altura do progresso */
+    appearance: none; /* Remove o estilo padrão */
+    border: 2px solid #000000; /* Borda preta */
+    border-radius: 5px; /* Bordas arredondadas */
+    overflow: hidden; /* Esconde o excesso */
+}
+
+/* Estilo para a barra de progresso no Webkit */
+progress::-webkit-progress-bar {
+    background-color: #f0f0f0; /* Fundo claro */
+}
+
+/* Estilo para o texto de progresso */
+#progressText {
+    font-size: 14px; /* Tamanho da fonte */
+    color: #555; /* Cor do texto */
+    margin-top: 5px; /* Margem superior */
+}
+
+/* Modo escuro - cor do texto de progresso */
+body.dark-mode #progressText {
+    color: #bbbbbb; /* Cor acinzentada */
+}
+
+/* Estilo geral para botões */
+button {
+    background: none; /* Sem fundo */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor "pointer" ao passar sobre o botão */
+    font-size: 18px; /* Tamanho da fonte */
+}
+
+.tela2{
+  width: 80vw;
+  height: 80vh;
+  border: 3px solid black;
+  border-radius: 7px;
+  position: fixed;
+  background-color: white;
+}
+
+
+.sub{
+  font-family: "Sriracha", cursive;
+  margin-left: 3vw;
+}
+
+.nois{
+  font-family: "Sriracha", cursive;
+  margin-left: 10vw;
+  display: flex;
+  font-size: 32px;
+}
+
+.nois img{
+  width: 4vw;
+  margin-left: 1vw;
+}
+
+.titulo {
+  font-family: "Sriracha", cursive;
+  text-align: center;
+}
+
+i {
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  position: relative;
+}
+
+#xzinho{
+  font-size: 35px;
+  bottom: 20px;
+}
