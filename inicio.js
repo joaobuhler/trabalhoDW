@@ -38,6 +38,7 @@ function adicionarTarefa() {
 function adicionarEventos(tarefa) {
     const botaoExcluir = tarefa.querySelector(".delete-btn");
     const checkbox = tarefa.querySelector(".task-checkbox");
+    const botaoEditar = tarefa.querySelector(".edit-btn");
 
     botaoExcluir.addEventListener("click", () => {
         tarefa.remove();
@@ -48,7 +49,46 @@ function adicionarEventos(tarefa) {
         tarefa.querySelector(".task-text").classList.toggle("completed", event.target.checked);
         atualizarProgresso();
     });
+
+    botaoEditar.addEventListener("click", () => {
+        const textoTarefa = tarefa.querySelector(".task-text");
+        abrirModalEdicao(textoTarefa);
+    });
 }
+
+function abrirModalEdicao(textoTarefa) {
+    // Cria o modal
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    modal.innerHTML = `
+        <div class="modal-content">
+            <input type="text" class="modal-input" value="${textoTarefa.textContent}">
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const inputModal = modal.querySelector(".modal-input");
+
+    // Salvar ao pressionar Enter
+    inputModal.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            textoTarefa.textContent = inputModal.value.trim();
+            modal.remove();
+        }
+    });
+
+   
+
+    // Fechar o modal ao clicar fora dele
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
 
 botaoMais.addEventListener("click", adicionarTarefa);
 
