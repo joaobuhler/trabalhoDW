@@ -10,7 +10,7 @@ function atualizarProgresso() {
     const tarefasConcluidas = listaTarefas.querySelectorAll(".task-text.completed").length;
     tarefaProgress.max = totalTarefas;
     tarefaProgress.value = tarefasConcluidas;
-    progressText.textContent = `${tarefasConcluidas} ${totalTarefas} tarefas concluídas`;
+    progressText.textContent = `${tarefasConcluidas}/${totalTarefas} tarefas concluídas`;
 }
 
 function adicionarTarefa() {
