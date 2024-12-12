@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
     <style>
+        /* Importa fontes personalizadas do Google Fonts */
         @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
         @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
 
+        /* Estilo do corpo da página */
         body {
             margin-top: 10vw;
             justify-content: center;
@@ -20,29 +21,33 @@
             color: black;
             transition: background-color 0.3s, color 0.3s;
         }
-        
+
+        /* redefine margens e espaçamentos */
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
 
-        
+        /* Remove o estilo padrão de itens de lista */
         li {
             list-style: none;
         }
         
+        /* Centraliza o título */
         h2 {
             display: flex;
             justify-content: center;
             padding-top: 30px;
         }
         
+        /* muda o fundo e a cor no modo escuro */
         body.dark-mode {
             background-color: #242323;
             color: #eaeaea;
         }
 
+        /* Botão que muda para o modo escuro */
         #dark {
             position: fixed;
             right: 10px;
@@ -53,35 +58,41 @@
             cursor: pointer;
         }
 
+        /* Muda a borda do botão no modo escuro */
         body.dark-mode #dark {
             border: 2px solid white;
         }
         
+        /* muda o input no modo escuro */
         body.dark-mode #inputTarefa {
             border: 2px solid white;
             background-color: #272727;
             color: white;
         }
 
+        /* cor do placeholder */
         ::placeholder{
             color: rgb(46, 46, 46);
         }
         
-        
+        /* icones */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
             cursor: pointer;
         }
 
+        /* muda e define o conteúdo de ícones de modo claro*/
         .icon-light_mode::before {
             content: "light_mode";
         }
 
+        /* no modo escuro */
         .icon-dark_mode::before {
             content: "dark_mode";
         }
 
+        /*organização da lista de tarefas */
         .listaTarefas {
             display: flex;
             flex-direction: column;
@@ -89,12 +100,14 @@
             margin-top: 20px;
         }
 
+        /* container do input*/
         .inputContainer {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
         }
 
+        /* campo do input */
         #inputTarefa {
             text-indent: 10px;
             width: 400px;
@@ -109,6 +122,7 @@
             color: white;
         }
         
+         /* Botão para adicionar tarefas */
         #botaoMais {
             width: 45px;
             height: 35px;
