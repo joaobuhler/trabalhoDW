@@ -122,8 +122,8 @@
             color: white;
         }
         
-         /* Botão para adicionar tarefas */
-        #botaoMais {
+           /* Botão para adicionar tarefas */
+           #botaoMais {
             width: 45px;
             height: 35px;
             border: 2px solid black;
@@ -134,6 +134,7 @@
             font-weight: bold;
         }
 
+        /* Estilos para os ícones de edição e exclusão */
         .icon-edit::before {
             content: "edit";
         }
@@ -142,109 +143,123 @@
             content: "delete";
         }
     
+        /* Modo escuro - estilo para os itens da lista */
         body.dark-mode ul li {
             background-color: #333232;
             border: 2px solid rgb(255, 255, 255);
         }
 
+        /* Modo escuro - cor dos ícones */
         body.dark-mode .material-symbols-outlined {
             color: white;
         }
 
+        /* Modo escuro - cor do texto placeholder */
         body.dark-mode ::placeholder {
             color: rgb(187, 187, 187);
         }
         
+        /* Modo escuro - estilo para o elemento progress */
         body.dark-mode progress {
             border: 2px solid white;
         }
 
+        /* Estilo geral para a lista */
         ul {
             padding: 0;
             width: 450px;
         }
 
+        /* Estilo para os itens da lista */
         ul li {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #f0f0f0;
-            padding: 10px;
-            width: 450px;
-            border: 2px solid black;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            word-break: break-all;
+            display: flex; /* Alinha os elementos filhos em linha */
+            align-items: center; /* Centraliza os elementos verticalmente */
+            justify-content: space-between; /* Espaçamento igual entre os elementos */
+            background-color: #f0f0f0; /* Fundo claro */
+            padding: 10px; /* Espaçamento interno */
+            width: 450px; /* Largura dos itens */
+            border: 2px solid black; /* Borda preta */
+            border-radius: 5px; /* Bordas arredondadas */
+            margin-bottom: 10px; /* Espaço entre os itens */
+            word-break: break-all; /* Quebra palavras longas */
         }
 
+        /* Estilo para o texto das tarefas */
         .task-text {
-            flex: 1;
-            margin: 0 10px;
+            flex: 1; /* Ocupa o espaço disponível */
+            margin: 0 10px; /* Margem lateral */
         }
 
+        /* Estilo para tarefas concluídas */
         .task-text.completed {
-            text-decoration: line-through;
-            color: gray;
+            text-decoration: line-through; /* Texto riscado */
+            color: gray; /* Cor cinza */
         }
 
+        /* Estilo para a seção de progresso */
         .progress {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-            flex-direction: column;
+            display: flex; /* Alinha os elementos filhos em linha */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            margin-top: 30px; /* Margem superior */
+            flex-direction: column; /* Alinha os elementos em coluna */
         }
 
+        /* Estilo para o elemento progress */
         progress {
-            width: 445px;
-            height: 30px;
-            appearance: none;
-            border: 2px solid #000000;
-            border-radius: 5px;
-            overflow: hidden;
+            width: 445px; /* Largura do progresso */
+            height: 30px; /* Altura do progresso */
+            appearance: none; /* Remove o estilo padrão */
+            border: 2px solid #000000; /* Borda preta */
+            border-radius: 5px; /* Bordas arredondadas */
+            overflow: hidden; /* Esconde o excesso */
         }
 
+        /* Estilo para a barra de progresso no Webkit */
         progress::-webkit-progress-bar {
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* Fundo claro */
         }
 
-
+        /* Estilo para o texto de progresso */
         #progressText {
-            font-size: 14px;
-            color: #555;
-            margin-top: 5px;
+            font-size: 14px; /* Tamanho da fonte */
+            color: #555; /* Cor do texto */
+            margin-top: 5px; /* Margem superior */
         }
 
+        /* Modo escuro - cor do texto de progresso */
         body.dark-mode #progressText {
-            color: #bbbbbb;
+            color: #bbbbbb; /* Cor acinzentada */
         }
 
+        /* Estilo geral para botões */
         button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
+            background: none; /* Sem fundo */
+            border: none; /* Sem borda */
+            cursor: pointer; /* Cursor "pointer" ao passar sobre o botão */
+            font-size: 18px; /* Tamanho da fonte */
         }
     </style>
 
 </head>
 
 <body>
-    <div class="container">
-        <span id="dark" class="material-symbols-outlined icon-light_mode"></span>
-        <h2>Lista de Tarefas</h2>
-        <main class="listaTarefas">
-            <div class="inputContainer">
-                <input type="text" id="inputTarefa" placeholder="Digite sua tarefa">
-                <button id="botaoMais">+</button>
+    <div class="container"> <!-- Contêiner principal -->
+        <span id="dark" class="material-symbols-outlined icon-light_mode"></span> <!-- Ícone para alternar modo escuro -->
+        <h2>Lista de Tarefas</h2> <!-- Título principal -->
+        <main class="listaTarefas"> <!-- Seção principal para a lista de tarefas -->
+            <div class="inputContainer"> <!-- Contêiner para o input e botão -->
+                <input type="text" id="inputTarefa" placeholder="Digite sua tarefa"> <!-- Campo de entrada para tarefas -->
+                <button id="botaoMais">+</button> <!-- Botão para adicionar tarefas -->
             </div>
-            <ul id="listaTarefas" class="listaTarefas"></ul>
+            <ul id="listaTarefas" class="listaTarefas"></ul> <!-- Lista onde as tarefas serão adicionadas -->
         </main>
-        <div class="progress">
-            <progress id="tarefaProgress" value="0" max="3"></progress>
-            <span id="progressText">0/0 tarefas concluídas</span>
+        <div class="progress"> <!-- Seção de progresso -->
+            <progress id="tarefaProgress" value="0" max="3"></progress> <!-- Barra de progresso -->
+            <span id="progressText">0/0 tarefas concluídas</span> <!-- Texto indicando progresso -->
         </div>
     </div>
+
 
     <script>
         const inputTarefa = document.getElementById("inputTarefa");
