@@ -113,14 +113,15 @@ darkModeButton.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".container");
     const tela2 = document.querySelector(".tela2");
+    const xButton = document.getElementById("xzinho"); // Obtém o botão "x"
 
     // Esconde a div "tela2" inicialmente
     tela2.style.display = "none";
-
-    // Adiciona o listener para a combinação de teclas
+    
+    // Adiciona o Ctrl + H
     document.addEventListener("keydown", (event) => {
         if (event.ctrlKey && event.key === "h") {
-            event.preventDefault(); // Evita o comportamento padrão do navegador
+            event.preventDefault();
             if (tela2.style.display === "none") {
                 tela2.style.display = "block";
                 container.style.display = "block";
@@ -129,5 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.style.display = "block";
             }
         }
+    });
+
+    // Adiciona o evento de clique no botão "x"
+    xButton.addEventListener("click", () => {
+        tela2.style.display = "none"; // Fecha a tela2 ao clicar no "x"
+        container.style.display = "block";
     });
 });
