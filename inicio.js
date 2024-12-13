@@ -25,6 +25,7 @@ function adicionarTarefa() {
     novaTarefa.innerHTML = `
         <input type="checkbox" class="task-checkbox">
         <span class="task-text">${textoTarefa}</span>
+        <input type="text" class="edit-input" style="display: none;">
         <button class="edit-btn"><span class="material-symbols-outlined icon-edit"></span></button>
         <button class="delete-btn"><span class="material-symbols-outlined icon-delete"></span></button>
     `;
@@ -39,6 +40,8 @@ function adicionarEventos(tarefa) {
     const botaoExcluir = tarefa.querySelector(".delete-btn");
     const checkbox = tarefa.querySelector(".task-checkbox");
     const botaoEditar = tarefa.querySelector(".edit-btn");
+    const textoTarefa = tarefa.querySelector(".task-text");
+    const inputEdicao = tarefa.querySelector(".edit-input");
 
     botaoExcluir.addEventListener("click", () => {
         tarefa.remove();
@@ -46,49 +49,31 @@ function adicionarEventos(tarefa) {
     });
 
     checkbox.addEventListener("change", (event) => {
-        tarefa.querySelector(".task-text").classList.toggle("completed", event.target.checked);
+        textoTarefa.classList.toggle("completed", event.target.checked);
         atualizarProgresso();
     });
 
     botaoEditar.addEventListener("click", () => {
-        const textoTarefa = tarefa.querySelector(".task-text");
-        abrirModalEdicao(textoTarefa);
+        if (inputEdicao.style.display === "none") {
+            inputEdicao.style.display = "block";
+            inputEdicao.value = textoTarefa.textContent;
+            textoTarefa.style.display = "none";
+            inputEdicao.focus();
+        } else {
+            textoTarefa.textContent = inputEdicao.value.trim();
+            inputEdicao.style.display = "none";
+            textoTarefa.style.display = "block";
+        }
     });
-}
 
-function abrirModalEdicao(textoTarefa) {
-    // Cria o modal
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-
-    modal.innerHTML = `
-        <div class="modal-content">
-            <input type="text" class="modal-input" value="${textoTarefa.textContent}">
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    const inputModal = modal.querySelector(".modal-input");
-
-    // Salvar ao pressionar Enter
-    inputModal.addEventListener("keydown", (event) => {
+    inputEdicao.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            textoTarefa.textContent = inputModal.value.trim();
-            modal.remove();
-        }
-    });
-
-   
-
-    // Fechar o modal ao clicar fora dele
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.remove();
+            textoTarefa.textContent = inputEdicao.value.trim();
+            inputEdicao.style.display = "none";
+            textoTarefa.style.display = "block";
         }
     });
 }
-
 
 botaoMais.addEventListener("click", adicionarTarefa);
 

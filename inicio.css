@@ -167,6 +167,14 @@ body.dark-mode ul li {
     border: 2px solid rgb(255, 255, 255);
 }
 
+.edit-input{
+    border-radius:8px;
+    font-family: "Sriracha", cursive;
+    padding-left: 5px;
+}
+
+
+
 /* Modo escuro - cor dos ícones */
 body.dark-mode .material-symbols-outlined {
     color: white;
