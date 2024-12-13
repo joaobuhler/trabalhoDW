@@ -110,7 +110,7 @@ body.dark-mode #inputTarefa {
 /* campo do input */
 #inputTarefa {
     text-indent: 10px;
-    width: 400px;
+    width: 40vw;
     height: 35px;
     border-radius: 5px;
     border: 2px solid black;
@@ -142,7 +142,7 @@ body.dark-mode #botaoMais {
 
    /* Botão para adicionar tarefas */
    #botaoMais {
-    width: 45px;
+    width: 35px;
     height: 35px;
     border: 2px solid black;
     border-radius: 5px;
@@ -207,7 +207,7 @@ ul li {
     justify-content: space-between; /* Espaçamento igual entre os elementos */
     background-color: #f0f0f0; /* Fundo claro */
     padding: 10px; /* Espaçamento interno */
-    width: 450px; /* Largura dos itens */
+    width: 44vw; /* Largura dos itens */
     border: 2px solid black; /* Borda preta */
     border-radius: 5px; /* Bordas arredondadas */
     margin-bottom: 10px; /* Espaço entre os itens */
@@ -237,7 +237,7 @@ ul li {
 
 /* Estilo para o elemento progress */
 progress {
-    width: 445px; /* Largura do progresso */
+    width: 44vw; /* Largura do progresso */
     height: 30px; /* Altura do progresso */
     appearance: none; /* Remove o estilo padrão */
     border: 2px solid #000000; /* Borda preta */
@@ -270,54 +270,141 @@ button {
     font-size: 18px; /* Tamanho da fonte */
 }
 
-.tela2{
-  width: 80vw;
-  height: 80vh;
-  border: 3px solid black;
-  border-radius: 7px;
-  position: fixed;
-  background-color: white;
+/* Estilo para o contêiner principal da tela 2 */
+.tela2 {
+    width: 80vw; /* Largura definida como 80% da largura da janela de visualização */
+    height: 80vh; /* Altura definida como 80% da altura da janela de visualização */
+    border: 3px solid black; /* Borda preta com 3px de espessura */
+    border-radius: 7px; /* Bordas ligeiramente arredondadas com raio de 7px */
+    position: fixed; /* Posição fixa para manter a tela visível mesmo ao rolar */
+    background-color: white; /* Cor de fundo branca */
+  }
+  
+  /* Estilo para os elementos com a classe "sub" */
+  .sub {
+    font-family: "Sriracha", cursive; /* Fonte decorativa Sriracha */
+    margin-left: 3vw; /* Margem esquerda de 3% da largura da janela */
+  }
+  
+  /* Estilo para os elementos com a classe "alunos" */
+  .alunos {
+    font-family: "Sriracha", cursive; /* Fonte decorativa Sriracha */
+    margin-left: 10vw; /* Margem esquerda de 10% da largura da janela */
+    display: flex; /* Exibe o conteúdo em um layout flexível */
+    font-size: 32px; /* Tamanho da fonte definido como 32px */
+  }
+  
+  /* Estilo para imagens dentro de elementos com a classe "alunos" */
+  .alunos img {
+    width: 4vw; /* Largura das imagens definida como 4% da largura da janela */
+    margin-left: 1vw; /* Margem esquerda de 1% da largura da janela */
+  }
+  
+  /* Estilo para os elementos com a classe "titulo" */
+  .titulo {
+    font-family: "Sriracha", cursive; /* Fonte decorativa Sriracha */
+    text-align: center; /* Centraliza o texto horizontalmente */
+  }
+  
+  /* Estilo para os elementos <i> (ícones) */
+  i {
+    cursor: pointer; /* Altera o cursor para indicar que é clicável */
+    padding: 5px; /* Espaçamento interno de 5px */
+    position: absolute; /* Posição absoluta relativa ao contêiner pai */
+    right: 10px; /* Posiciona o elemento 10px a partir da borda direita */
+  }
+  
+  /* Estilo para o cabeçalho */
+  .cabecalho {
+    display: flex; /* Layout flexível para alinhar os itens */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    width: 80vw; /* Largura definida como 80% da largura da janela */
+    position: relative; /* Posição relativa para ajustar o conteúdo */
+  }
+  
+  /* Estilo para o botão com ID "botao_fechar" */
+  #botao_fechar {
+    font-size: 35px; /* Tamanho da fonte definido como 35px */
+    bottom: 20px; /* Espaçamento inferior de 20px */
+  }
+
+/* Consultas de mídia para responsividade */
+@media (max-width: 800px) {
+    body {
+        font-size: 16px; /* Reduz o tamanho da fonte em telas menores */
+        margin-top: 10px; /* Ajusta a margem superior */
+    }
+
+    h2 {
+        font-size: 18px; /* Ajusta o tamanho do título */
+        padding-top: 20px;
+    }
+
+    #inputTarefa {
+        width: 70vw; /* Ajusta a largura do input */
+        font-size: 16px;
+    }
+
+    ul {
+        width: 80vw; /* Ajusta a largura da lista de tarefas */
+    }
+
+    ul li {
+        width: 100%; /* Garante que os itens ocupem toda a largura disponível */
+        padding: 10px;
+    }
+
+    progress {
+        width: 80vw; /* Ajusta a largura do progresso */
+    }
+
+    #dark {
+        right: 5px;
+        top: 5px;
+        padding: 5px; /* Reduz o tamanho do botão de modo escuro */
+        font-size: 14px;
+    }
+
+    #botaoMais {
+        width: 30px; /* Reduz o tamanho do botão de adicionar tarefas */
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .tela2 {
+        width: 95vw; /* Ajusta o tamanho do modal em telas pequenas */
+        height: 70vh;
+    }
+
+    .alunos {
+        font-size: 24px; /* Reduz o tamanho do texto */
+        flex-direction: column; /* Alinha os elementos em coluna */
+        text-align: center;
+    }
+
+    .alunos img {
+        width: 8vw; /* Ajusta o tamanho das imagens */
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    #botao_fechar {
+        font-size: 25px; /* Reduz o tamanho do botão de fechar */
+        top: 10px;
+    }
 }
 
+@media (max-width: 500px) {
+    body {
+        font-size: 14px; /* Ajusta o tamanho da fonte para telas muito pequenas */
+    }
 
-.sub{
-  font-family: "Sriracha", cursive;
-  margin-left: 3vw;
-}
+    #inputTarefa {
+        font-size: 14px;
+    }
 
-.nois{
-  font-family: "Sriracha", cursive;
-  margin-left: 10vw;
-  display: flex;
-  font-size: 32px;
-}
-
-.nois img{
-  width: 4vw;
-  margin-left: 1vw;
-}
-
-.titulo {
-  font-family: "Sriracha", cursive;
-  text-align: center;
-}
-
-i {
-  cursor: pointer;
-  padding: 5px;
-  position: absolute;
-  right: 10px;
-}
-
-.cabecalho {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80vw;
-  position: relative;
-}
-
-#xzinho{
-  font-size: 35px;
-  bottom: 20px;
+    progress {
+        height: 20px; /* Ajusta a altura do progresso */
+    }
 }
